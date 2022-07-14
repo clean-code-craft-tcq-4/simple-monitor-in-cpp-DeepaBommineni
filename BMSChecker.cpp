@@ -8,37 +8,36 @@ float HIGHER_LIMIT_CHARGE_RATE = 0.8;
 int percentageOfTolerance = 5;
 
 bool tempOfBatteryIsOk(float temperature) {
-	if(isRangeOk(temperature, LOWER_LIMIT_TEMP, HIGHER_LIMIT_TEMP)){
+	if (isRangeOk(temperature, LOWER_LIMIT_TEMP, HIGHER_LIMIT_TEMP)) {
 		earlyWarning(temperature, LOWER_LIMIT_TEMP, HIGHER_LIMIT_TEMP);
-	    return true;
+		return true;
 	}
-	cout << "Temperature is " << temperature<<"\n";
+	cout << "Temperature(Temperatur): " << temperature << "\n";
 	printMessage();
 	return false;
 }
 bool socOfbatteryIsOk(float soc) {
-	if (isRangeOk(soc,LOWER_LIMIT_SOC,HIGHER_LIMIT_SOC)) {
-		earlyWarning(soc,LOWER_LIMIT_SOC, HIGHER_LIMIT_SOC);
-        return true;
+	if (isRangeOk(soc, LOWER_LIMIT_SOC, HIGHER_LIMIT_SOC)) {
+		earlyWarning(soc, LOWER_LIMIT_SOC, HIGHER_LIMIT_SOC);
+		return true;
 	}
-	cout << "State of Charge is " << soc<<"\n";
+	cout << "State of Charge(Ladezustand): " << soc << "\n";
 	printMessage();
 	return false;
 }
 bool chargeRateofBatteryIsOk(float chargeRate) {
 	if (chargeRate > HIGHER_LIMIT_CHARGE_RATE) {
-		cout << "Charge Rate is "<< chargeRate << "\n";
+		cout << "Charge Rate(Ladestrom): " << chargeRate << "\n";
 		printMessage();
 		return false;
 	}
 	return true;
 }
 bool batteryIsOk(float temperature, float soc, float chargeRate) {
-
 	bool temperatureCondition = tempOfBatteryIsOk(temperature);
 	bool socCondition = socOfbatteryIsOk(soc);
 	bool chargeRateCondition = chargeRateofBatteryIsOk(chargeRate);
-	bool batteryCondition = (temperatureCondition && socCondition && chargeRateCondition);
+	bool batteryCondition = combinedCheck(temperatureCondition, socCondition, chargeRateCondition);
 	return batteryCondition;
 }
 void earlyWarning(float value, float LOWER_LIMIT, float HIGH_LIMIT) {
