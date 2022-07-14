@@ -6,6 +6,7 @@ float LOWER_LIMIT_SOC = 20;
 float HIGHER_LIMIT_SOC = 80;
 float HIGHER_LIMIT_CHARGE_RATE = 0.8;
 int percentageOfTolerance = 5;
+
 bool tempOfBatteryIsOk(float temperature) {
 	if(isRangeOk(temperature, LOWER_LIMIT_TEMP, HIGHER_LIMIT_TEMP)){
 		earlyWarning(temperature, LOWER_LIMIT_TEMP, HIGHER_LIMIT_TEMP);
@@ -50,19 +51,4 @@ void earlyWarning(float value, float LOWER_LIMIT, float HIGH_LIMIT) {
 		cout << "Reaching Higher Limit " << value << "\n";
 		printTolMessage();
 	}
-}
-
-bool isRangeOk(float value, float LOWER_LIMIT, float HIGH_LIMIT) {
-	if (value < LOWER_LIMIT || value > HIGH_LIMIT) {
-		return false;
-	}
-	return true;
-}
-void printMessage() {
-	cout << " Out of Range!!\n";
-	cout << " Außer Reichweite!!\n";
-}
-void printTolMessage() {
-	cout << "Early warning!: Reaching  5% of Tolerance \n";
-	cout << "Frühwarnung!: Toleranz erreichen \n";
 }
