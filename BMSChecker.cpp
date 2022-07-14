@@ -41,12 +41,19 @@ bool batteryIsOk(float temperature, float soc, float chargeRate) {
 	return batteryCondition;
 }
 void earlyWarning(float value, float LOWER_LIMIT, float HIGH_LIMIT) {
-	float tolValue = HIGH_LIMIT * percentageOfTolerance / 100;
-	if ((LOWER_LIMIT <= value) && (value <= (LOWER_LIMIT + tolValue))) {
+	float toleranceVal = HIGH_LIMIT * percentageOfTolerance / 100;
+	warnLowerLimit(value, LOWER_LIMIT, HIGH_LIMIT, toleranceVal);
+	warnHigherLimit(value, LOWER_LIMIT, HIGH_LIMIT, toleranceVal);
+
+}
+void warnLowerLimit(float value, float LOWER_LIMIT, float HIGH_LIMIT,float tolVal) {
+	if ((LOWER_LIMIT <= value) && (value <= (LOWER_LIMIT + tolVal))) {
 		cout << "Reaching Lower Limit " << value << "\n";
 		printTolMessage();
 	}
-	if (((HIGH_LIMIT - tolValue) <= value) && (value <= HIGH_LIMIT)) {
+}
+void warnHigherLimit(float value, float LOWER_LIMIT, float HIGH_LIMIT,float tolVal) {
+	if (((HIGH_LIMIT - tolVal) <= value) && (value <= HIGH_LIMIT)) {
 		cout << "Reaching Higher Limit " << value << "\n";
 		printTolMessage();
 	}

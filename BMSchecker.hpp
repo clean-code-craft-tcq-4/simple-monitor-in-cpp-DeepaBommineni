@@ -17,3 +17,5 @@ bool isRangeOk(float value, float LOWER_LIMIT, float HIGH_LIMIT);
 void printMessage();
 void printTolMessage();
 bool combinedCheck(bool tempCond, bool socCond, bool chargeRateCond);
+void warnLowerLimit(float value, float LOWER_LIMIT, float HIGH_LIMIT, float tolVal);
+void warnHigherLimit(float value, float LOWER_LIMIT, float HIGH_LIMIT, float tolVal);

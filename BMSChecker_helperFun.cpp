@@ -15,5 +15,5 @@ void printTolMessage() {
 	cout << "Frühwarnung!: 5 % der Toleranz erreicht \n";
 }
 bool combinedCheck(bool tempCond, bool socCond, bool chargeRateCond) {
-	return tempCond&&socCond&&chargeRateCond;
+	return (tempCond&&socCond&&chargeRateCond);
 }
