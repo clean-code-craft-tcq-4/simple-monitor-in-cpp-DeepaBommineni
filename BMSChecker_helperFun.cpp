@@ -1,4 +1,4 @@
-#include "checker.hpp"
+#include "BMSChecker.hpp"
 
 bool isRangeOk(float value, float LOWER_LIMIT, float HIGH_LIMIT) {
 	if (value < LOWER_LIMIT || value > HIGH_LIMIT) {

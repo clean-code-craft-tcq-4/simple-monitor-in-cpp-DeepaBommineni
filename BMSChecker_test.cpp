@@ -1,6 +1,6 @@
 #include <assert.h>
 #include <iostream>
-#include "checker.hpp"
+#include "BMSChecker.hpp"
 #include <string>
 using namespace std;
 
