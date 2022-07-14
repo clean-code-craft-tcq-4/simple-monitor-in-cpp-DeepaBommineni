@@ -12,3 +12,7 @@ bool tempOfBatteryIsOk(float temperature);
 bool socOfbatteryIsOk(float soc);
 bool chargeRateofBatteryIsOk(float chargeRate);
 bool batteryIsOk(float temperature, float soc, float chargeRate);
+void earlyWarning(float value, float LOWER_LIMIT, float HIGH_LIMIT);
+bool isRangeOk(float value, float LOWER_LIMIT, float HIGH_LIMIT);
+void printMessage();
+void printTolMessage();
